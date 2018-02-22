@@ -1,6 +1,22 @@
+
+const checkStorage = () => {
+	var match = true;
+	try {JSON.parse(localStorage.getItem('leaderboard')).map((x:leaderboardState) => {
+		if (x.active == undefined){ match = false };
+		if (x.bpm == undefined){ match = false };
+		if (x.score == undefined){ match = false };
+		if (x.username == undefined){ match = false };
+	})
+	}catch(err){
+		console.log("ERROR");
+		match = false;
+	}
+	return match
+}
+
 export const initLeaderboardState = () => {
-	if(localStorage.getItem('leaderboard')){
-		return JSON.parse(localStorage.getItem('leaderboard'))
+	if(checkStorage()){
+		return JSON.parse(localStorage.getItem('leaderboard'));
 	}
 	else {
 		localStorage.setItem('leaderboard', JSON.stringify(defaultLeaderboardState()))
