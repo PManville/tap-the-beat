@@ -6,6 +6,7 @@ import {
 	COUNTDOWN,
 	RESET_GAME,
 	START_GAME,
+	KEYBOARD_LISTENER,
 	CHANGE_SCORE,
 	UPDATE_BPM
 } from '../constants/ActionTypes';
@@ -22,6 +23,10 @@ export const changeScreen = (screen:number) => ({
 
 export const countdown = () => ({
 	type: COUNTDOWN
+})
+
+export const keyboardListener = () => ({
+	type: KEYBOARD_LISTENER
 })
 
 export const restartGame = (newGameStats: object) => ({

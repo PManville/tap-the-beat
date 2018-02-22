@@ -14,8 +14,6 @@ const App = ({currentScreen}:any):JSX.Element => (
 	</Container>
 )
 
-
-
 const mapStateToProps = (state:any) => ({
 	currentScreen: state.screen.currentScreen
 })

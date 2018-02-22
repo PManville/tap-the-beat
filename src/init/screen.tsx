@@ -1,7 +1,9 @@
 export interface screenState{
-	currentScreen: number
+	currentScreen: number,
+	keyboardListener: boolean
 }
 
 export const initScreenState = ():screenState => ({
-	currentScreen: 1
+	currentScreen: 1,
+	keyboardListener: false
 })

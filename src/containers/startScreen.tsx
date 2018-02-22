@@ -6,7 +6,8 @@ import Title from '../components/Title';
 import Button from '../components/Button';
 import LeaderboardList from './leaderboardList';
 import { 
-	changeScreenFunction
+	changeScreenFunction,
+	addKeyboardListener
 } from '../actions';
 import { 
 	getStartLeaderboard
@@ -14,14 +15,14 @@ import {
 
 
 
-const StartScreen = ({leaderboard, changeScreenFunction}:any):JSX.Element => (
+const StartScreen = ({leaderboard, changeScreenFunction, addKeyboardListener}:any):JSX.Element => (
 	<Container>
 		<Title>Tap the Beat!</Title>
 		<Title leaderboard>Top 5</Title>
 		<Container leaderboard>
 			<LeaderboardList leaderboard={leaderboard}/>
 		</Container>
-		<Button onClick={ () => changeScreenFunction(2) } >Play</Button>
+		<Button onClick={ () => { addKeyboardListener(); changeScreenFunction(2) }} >Play</Button>
 	</Container>
 );	
 
@@ -34,5 +35,5 @@ const mapStateToProps = (state:any) => ({
 
 export default connect(
   mapStateToProps,
-  { changeScreenFunction }
+  { changeScreenFunction, addKeyboardListener }
 )(StartScreen)

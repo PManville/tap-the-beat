@@ -1,4 +1,5 @@
 import { CHANGE_SCREEN } from '../constants/ActionTypes'
+import { KEYBOARD_LISTENER } from '../constants/ActionTypes'
 import { initScreenState, screenState } from '../init/screen'
 
 const screen = (state:screenState = initScreenState(), action:any) => {
@@ -7,6 +8,11 @@ const screen = (state:screenState = initScreenState(), action:any) => {
 			return {
 				...state,
 				currentScreen: action.screen
+			}
+		case KEYBOARD_LISTENER:
+			return {
+				...state,
+				keyboardListener: true
 			}
 	    default:
 			return state

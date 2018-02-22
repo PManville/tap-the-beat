@@ -6,7 +6,7 @@ import Title from '../components/Title';
 import Button from '../components/Button';
 import Span from '../components/Span';
 import GameScreenHeader from './gameScreenHeader';
-import { tap } from '../actions';
+import { mouseTap } from '../actions';
 import { 
 	getCurrentBPMPrefix,
 	compare
@@ -14,7 +14,7 @@ import {
 
 
 
-const GameScreen = ({bpmPrefix, bpmSuffix, bpmCurrent, game, player, tap}:any):JSX.Element => (
+const GameScreen = ({bpmPrefix, bpmSuffix, bpmCurrent, game, player, mouseTap}:any):JSX.Element => (
 	<Container>
 		<GameScreenHeader game={game} player={player}/>
 		<Title currentBPM>
@@ -22,11 +22,9 @@ const GameScreen = ({bpmPrefix, bpmSuffix, bpmCurrent, game, player, tap}:any):J
 		<Span>{ bpmCurrent }</Span>
 			{ bpmSuffix }
 		</Title>
-		<Button tapper onClick={ () => tap(game,player) }>Tap</Button>
+		<Button tapper onClick={ () => mouseTap(game,player) }>Tap</Button>
 	</Container>
 );
-
-
 
 const mapStateToProps = (state:any) => ({
 	game: state.currentGame,
@@ -38,5 +36,5 @@ const mapStateToProps = (state:any) => ({
 
 export default connect(
   mapStateToProps,
-  { tap }
+  { mouseTap }
 )(GameScreen)

@@ -5,6 +5,8 @@ import { initGameState, gameState } from '../init/game'
 import * as Actions from './actions';
 
 
+
+
 export const updateUsernameFunction = (username:string) => (dispatch:Function) => {
 	dispatch(Actions.updateUsername(username))
 }
@@ -18,23 +20,6 @@ export const submitScoreFunction = (currentPlayer:playerState) => (dispatch:Func
 	dispatch(Actions.changeScreen(1));
 	dispatch(Actions.resetPlayer(initPlayerState()));
 	localStorage.setItem('leaderboard', JSON.stringify(getState().leaderboard))
-}
-
-const startTimer = (time:number, dispatch:Function, callback:Function) => {
-	var timer = time;
-	var currentTimer = setInterval(() => {
-		timer--;
-		dispatch(Actions.countdown())
-		if(timer == 0){
-			callback(dispatch)
-			clearInterval(currentTimer);
-		}
-	}, 1000)
-}
-
-const tapCallback = (dispatch:Function) => {
-	dispatch(Actions.changeScreen(3));
-	dispatch((dispatch:Function) => restartGameAsync(dispatch));
 }
 
 const restartGameAsync = (dispatch:Function) => {
@@ -59,9 +44,25 @@ const calculateScore = (game:gameState, player:playerState, dispatch:Function) =
 	dispatch(Actions.updateBPM(updateBPMFunction(bpm)))
 }
 
-export const tap = (game:gameState, player:playerState) => (dispatch:Function, getState:Function) => {
+export const addKeyboardListener = () => (dispatch:Function, getState:Function) => {
+	var listener = () => {
+		if(getState().screen.currentScreen == 2){
+			tap(getState().currentGame,getState().currentPlayer,dispatch,getState);
+		}
+	}
+	if (!getState().screen.keyboardListener){
+		dispatch(Actions.keyboardListener());
+		document.addEventListener("keydown", listener);
+	}
+}
+
+export const mouseTap = (game:gameState, player:playerState) => (dispatch:Function, getState:Function) => {
+	tap(game, player, dispatch, getState)
+}
+
+const tap = (game:gameState, player:playerState, dispatch:Function, getState:Function) => {
 	if(!game.started){
-		startTimer(game.time, dispatch, tapCallback);
+		startTimer(game.time, dispatch, getState, tapCallback);
 		dispatch(Actions.startGame(true))
 	}
 	calculateScore(game, player, dispatch)
@@ -72,6 +73,23 @@ const updateBPMFunction = (bpm:number) => ({
 	bpmCurrent: bpm
 })
 
+
+const startTimer = (time:number, dispatch:Function, getState:Function, callback:Function) => {
+	var timer = time;
+	var currentTimer = setInterval(() => {
+		timer--;
+		dispatch(Actions.countdown())
+		if(timer == 0){
+			callback(dispatch, getState)
+			clearInterval(currentTimer);
+		}
+	}, 1000)
+}
+
+const tapCallback = (dispatch:Function, getState:Function) => {
+	dispatch(Actions.changeScreen(3));
+	dispatch((dispatch:Function) => restartGameAsync(dispatch));
+}
 
 export const bpmNew = () => (Math.floor(Math.random()*220) + 60)
 

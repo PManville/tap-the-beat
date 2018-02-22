@@ -5,5 +5,6 @@ export const SUBMIT_SCORE: string = "SUBMIT_SCORE";
 export const COUNTDOWN: string = "COUNTDOWN";
 export const RESET_GAME: string = "RESET_GAME";
 export const START_GAME: string = "START_GAME";
+export const KEYBOARD_LISTENER: string = "KEYBOARD_LISTENER";
 export const CHANGE_SCORE: string = "CHANGE_SCORE";
 export const UPDATE_BPM: string = "UPDATE_BPM";
