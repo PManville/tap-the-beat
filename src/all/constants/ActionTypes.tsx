@@ -1,0 +1,9 @@
+export const UPDATE_USERNAME: string = "UPDATE_USERNAME";
+export const CHANGE_SCREEN: string = "CHANGE_SCREEN";
+export const RESET_PLAYER: string = "RESET_PLAYER";
+export const SUBMIT_SCORE: string = "SUBMIT_SCORE";
+export const COUNTDOWN: string = "COUNTDOWN";
+export const RESET_GAME: string = "RESET_GAME";
+export const START_GAME: string = "START_GAME";
+export const CHANGE_SCORE: string = "CHANGE_SCORE";
+export const UPDATE_BPM: string = "UPDATE_BPM";

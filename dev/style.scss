@@ -1,0 +1,16 @@
+html {
+	font-size: 16px;
+	@media(max-width:600px){
+		font-size:14px;
+	}
+}
+
+body {
+	background: #ff5150;
+	margin: 0;
+	font-family: 'Monoton', cursive;
+    letter-spacing: 0.2rem;
+    border: 10px solid #cd3f3f;
+    border-left-color: #ff6a6a;
+    border-top-color: #ff6a6a;
+}
