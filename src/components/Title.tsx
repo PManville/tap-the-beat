@@ -14,6 +14,9 @@ export const Title = styledTS<TitleProps>(styled.h2)`
 	display: ${props => props.gameInfo && 'inline-block'};
     width: ${props => props.gameInfo && '33%'};
     color: ${props => props.position && 'gold'};
+    @media(max-width:550px){
+    	font-size: 1.75rem;
+    }
     @media(max-width:600px){
     	font-size: ${props => props.gameInfo && "1.25rem"}
     }

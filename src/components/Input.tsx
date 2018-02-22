@@ -8,8 +8,8 @@ interface InputProps{
 	bpm?: boolean;
 }
 
-export const Input = styledTS<InputProps>(styled.input)`    
-	padding: 15px;
+export const Input = styledTS<InputProps>(styled.input)`   
+    padding: 0.875rem;
     display: inline-block;
     width: 25%;
     box-sizing: border-box;
