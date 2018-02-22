@@ -2,13 +2,12 @@
 const checkStorage = () => {
 	var match = true;
 	try {JSON.parse(localStorage.getItem('leaderboard')).map((x:leaderboardState) => {
-		if (x.active == undefined){ match = false };
-		if (x.bpm == undefined){ match = false };
-		if (x.score == undefined){ match = false };
-		if (x.username == undefined){ match = false };
+		if (x.active == undefined || typeof(x.active) !== "boolean"){ match = false };
+		if (x.bpm == undefined || typeof(x.bpm) !== "number" ){ match = false };
+		if (x.score == undefined || typeof(x.score) !== "number" ){ match = false };
+		if (x.username == undefined || typeof(x.username) !== "string" ){ match = false };
 	})
 	}catch(err){
-		console.log("ERROR");
 		match = false;
 	}
 	return match
