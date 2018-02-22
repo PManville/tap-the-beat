@@ -1,11 +1,11 @@
-import App from './../src/all/containers/App';
+import App from './../src/containers/App';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
-import reducer from './../src/all/reducers';
+import reducer from './../src/reducers';
 
 import './style.scss';
 
