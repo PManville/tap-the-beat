@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server-start": "nodemon shortUrlServer.js",
+    "server-start": "nodemon asyncServer.js",
     "app-start": "node dev/devServer.js",
     "start": "concurrently 'npm run server-start' 'npm run app-start' --kill-others"
   },
