@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const shortId = require('shortid');
 const cors = require('cors');
 
 const app = express();
